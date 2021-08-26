@@ -3,12 +3,25 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
 import { Button } from "@chakra-ui/react";
-
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../slices/basketSlice";
 const MAX = 5;
 const MIN = 1;
 function Product({ id, title, price, description, category, image }) {
+  const dispatch = useDispatch();
   const [rating] = useState(Math.floor(Math.random() * (MAX - MIN + 1) + MIN));
   const [hasPrime] = useState(Math.random() < 0.5);
+  const addItemToBasket = () => {
+    const product = {
+      id,
+      title,
+      price,
+      description,
+      category,
+      image,
+    };
+    dispatch(addToBasket(product));
+  };
   return (
     <div className="relative flex flex-col bg-white m-5 z-30 p-10">
       <p className="absolute top-2 right-2 text-xs italic text-gray-400 ">
@@ -48,6 +61,7 @@ function Product({ id, title, price, description, category, image }) {
         }}
         fontSize="xs"
         _hover={{ bgGradient: "linear(to-b, yellow.500, yellow.300)" }}
+        onClick={addItemToBasket}
       >
         Add to Basket
       </Button>

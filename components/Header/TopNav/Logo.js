@@ -1,14 +1,8 @@
-import { Button, Text } from "@chakra-ui/react";
 import React from "react";
-import useDarkMode from "../../useDarkMode";
 import Image from "next/image";
-import { CgMoon, CgSun } from "react-icons/cg";
-import { useState } from "react";
-import NightModeButton from "./NightModeButton";
+import { useRouter } from "next/dist/client/router";
 function Header() {
-  const [isDark, setIsDark] = useState(false);
-  const [colorTheme, setTheme] = useDarkMode();
-
+  const router = useRouter();
   return (
     <div className="mt-2 flex items-center flex-grow-0 sm:flex-grow md:flex-grow lg:flex-grow">
       <Image
@@ -17,6 +11,7 @@ function Header() {
         height={50}
         objectFit="contain"
         className="cursor-pointer"
+        onClick={() => router.push("/")}
       />
     </div>
   );
