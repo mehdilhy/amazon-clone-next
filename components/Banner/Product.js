@@ -20,7 +20,7 @@ function Product({ id, title, price, description, category, image }) {
         {Array(rating)
           .fill()
           .map((_, i) => (
-            <StarIcon className="h-5 text-yellow-500" />
+            <StarIcon className="h-5 text-yellow-500" key={i} />
           ))}
       </div>
       <p className="text-xs my-2 line-clamp-2">{description}</p>
@@ -29,7 +29,13 @@ function Product({ id, title, price, description, category, image }) {
       </div>
       {hasPrime && (
         <div className="flex items-center space-x-2 -mt-5">
-          <img className="w-12" src="https://links.papareact.com/fdw" alt="" />
+          <Image
+            width={48}
+            height={48}
+            objectFit="contain"
+            src="https://links.papareact.com/fdw"
+            alt=""
+          />
           <p className="text-xs text-gray-500">
             FREE Delivery if you have prime ( or star my github)
           </p>

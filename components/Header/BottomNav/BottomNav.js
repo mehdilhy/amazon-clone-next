@@ -25,8 +25,8 @@ const BottomNav = () => {
       <p className="cursor-pointer hover:outline whitespace-nowrap">
         Today's Deals
       </p>
-      {navItems.map((item) => (
-        <NavItem name={item} />
+      {navItems.map((item, i) => (
+        <NavItem name={item} key={i} />
       ))}
     </div>
   );
